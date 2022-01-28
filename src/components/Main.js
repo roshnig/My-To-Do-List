@@ -9,9 +9,7 @@ function Main() {
     ])
     return (
 
-        <div
-            className="main">
-            {console.log(tasks)}
+        <div className="main">
             <ToDoForm setTasks={setTasks}></ToDoForm>
             <ToDoList taskList={tasks} setTasks={setTasks}></ToDoList>
         </div>
