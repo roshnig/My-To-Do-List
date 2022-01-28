@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 const ToDoForm = (props) => {
-    const [task, setTask] = useState({ task: "" });
+    const [task, setTask] = useState({ task: "", completed: false });
 
     const addTask = (event) => {
         event.preventDefault();
@@ -9,21 +9,27 @@ const ToDoForm = (props) => {
             let newTasks = [...tasks];
             newTasks.push(task);
             return newTasks;
+
         });
+        setTask({ task: "", completed: false })
     };
+
+    const handleInputValue = (event) => {
+        setTask((task) => {
+            let newTask = { ...task };
+            newTask.task = event.target.value;
+            newTask.id = Date.now();
+            return newTask;
+        });
+    }
+
     return (
         <form className="inputForm">
             <input
                 placeholder="please add a task"
                 id="myinput"
                 value={task.task}
-                onChange={(event) => {
-                    setTask((task) => {
-                        let newTask = { ...task };
-                        newTask.task = event.target.value;
-                        return newTask;
-                    });
-                }}
+                onChange={handleInputValue}
             ></input>
             <button onClick={addTask}>Add Task</button>
         </form>

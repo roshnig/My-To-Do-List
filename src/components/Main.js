@@ -4,16 +4,16 @@ import ToDoList from './ToDoList';
 
 function Main() {
     const [tasks, setTasks] = useState([
-        { task: "Brush my teeth" },
-        { task: "Have my breakfast" }
+        { id: "1", task: "Brush my teeth", completed: true },
+        { id: "2", task: "Have my breakfast", completed: false }
     ])
     return (
-        
-        <div 
-        className="main">
+
+        <div
+            className="main">
             {console.log(tasks)}
             <ToDoForm setTasks={setTasks}></ToDoForm>
-            <ToDoList taskList={tasks}></ToDoList>
+            <ToDoList taskList={tasks} setTasks={setTasks}></ToDoList>
         </div>
     );
 }

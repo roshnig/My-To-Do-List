@@ -1,13 +1,21 @@
 const ToDoList = (props) => {
-    // here we will have useSate
-
+    const handleChange = (evt) => {
+        console.log(evt.target.node)
+        const key = evt.target.checked;
+        console.log(key)
+        // props.setTasks((currentTasks) => {
+        //     const key = evt.target.checked;
+        //     console.log(key)
+        //     //return 
+        // })
+    }
     return (
         <ul>
             {props.taskList.map((task) => {
                 return (
-                    <li key={task.task}>
+                    <li key={task.id}>
                         <div className="list-items">
-                            <input type="checkbox"></input>
+                            <input type="checkbox" checked={task.completed} onChange={handleChange}></input>
                             <p>{task.task}</p>
                             <div className="buttons">
                                 <button>Edit</button>
